@@ -1,6 +1,6 @@
 import pandas as pd
 from dateutil.relativedelta import relativedelta
-import textwrap
+import textwrap3
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from statistics import mean
@@ -45,7 +45,7 @@ def get_data_table():
 
 # Add line breaks to comments
 def add_new_line(comment):
-    split_text = textwrap.wrap(comment, width=25)
+    split_text = textwrap3.wrap(comment, width=25)
     final = '<br> '.join(split_text)
     return final
 
