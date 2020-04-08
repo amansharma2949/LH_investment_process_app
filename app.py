@@ -37,7 +37,9 @@ app.layout = html.Div(children = [html.Div([html.H1('LIGHTHAVEN INVESTMENT PROCE
             placeholder="Select a Ticker"
         ),
 
-        html.Div(id = 'main_graph')
+        html.Div(id = 'main_graph'),
+
+        html.Div(id = 'data_table')
 ])
 
 @app.callback(
@@ -119,7 +121,10 @@ def update_graph(ticker):
     return stock_chart
 
 ############################################################################################
-# Create table
+@app.callback(
+    Output(component_id = 'data_table', component_property='children'),
+    [Input(component_id='input', component_property='value')]
+)
 def show_data_table(ticker):
     table = create_table(get_data_table(), ticker)
 
