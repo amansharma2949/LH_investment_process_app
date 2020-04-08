@@ -128,17 +128,18 @@ def get_lags_average(data):
 # take ticker_data and fill out final_table
 def create_table(data_full, ticker):
     process_data = [['Pass Level 2/3', 0, 0], ['Pass Level 4/5', 0, 0], ['Pass Level 6/7', 0, 0]]
-    process_data = pd.DataFrame(process_data, columns=['', 'Average', ticker])
-    process_data = process_data.set_index([''])
+    process_data = pd.DataFrame(process_data, columns=['Research Phase', 'Average', ticker])
 
-    process_data.iloc[0][0] = get_lags_average(data_full)[0]
-    process_data.iloc[1][0] = get_lags_average(data_full)[1]
-    process_data.iloc[2][0] = get_lags_average(data_full)[2]
+    print(get_lags_average(data_full)[0])
+    process_data.loc[0, ("Average")] = get_lags_average(data_full)[0]
+    process_data.loc[1, ("Average")] = get_lags_average(data_full)[1]
+    process_data.loc[2, ("Average")] = get_lags_average(data_full)[2]
 
-    process_data.iloc[0][1] = get_lags_ticker(data_full, ticker)[0]
-    process_data.iloc[1][1] = get_lags_ticker(data_full, ticker)[1]
-    process_data.iloc[2][1] = get_lags_ticker(data_full, ticker)[2]
+    process_data.loc[0, (ticker)] = get_lags_ticker(data_full, ticker)[0]
+    process_data.loc[1, (ticker)] = get_lags_ticker(data_full, ticker)[1]
+    process_data.loc[2, (ticker)] = get_lags_ticker(data_full, ticker)[2]
 
     return process_data
+
 
 ############################################################################################

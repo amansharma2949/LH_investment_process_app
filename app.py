@@ -55,11 +55,8 @@ def update_graph(ticker):
     date_data_temp = date_data.sort_values(by=['Date'])
     date_data_temp = date_data_temp.reset_index(drop=True)
     date_data_temp = date_data_temp['Date']
-    start_zoom = date_data_temp[0] - relativedelta(months=2)
-    print(start_zoom)
-    end_zoom = date_data_temp[len(date_data_temp)-1] + relativedelta(months=2)
-    print(end_zoom)
-
+    start_zoom = date_data_temp[0] - relativedelta(months=1)
+    end_zoom = date_data_temp[len(date_data_temp)-1] + relativedelta(months=1)
 
     # Get stock price data
     start = datetime.datetime.today() - relativedelta(years=5)
