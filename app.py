@@ -128,6 +128,7 @@ def update_graph(ticker):
     return stock_chart
 
 ############################################################################################
+
 @app.callback(
     Output(component_id = 'data_table', component_property='children'),
     [Input(component_id='input', component_property='value')]
