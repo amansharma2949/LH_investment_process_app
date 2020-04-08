@@ -25,7 +25,9 @@ simplejson==3.16.0
 gunicorn==19.9.0
 
 
-
+plotly==4.1.1
+yahoo-finance==1.4.0
+yfinance==0.1.45
 
 textwrap3==0.9.2
 gspread==3.4.0
