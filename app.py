@@ -51,6 +51,15 @@ app.layout = html.Div(children = [html.Div([html.H1('LIGHTHAVEN INVESTMENT PROCE
 
 def update_graph(ticker):
     ticker_data = get_ticker_data(ticker)
+    date_data = ticker_data[['Date']]
+    date_data_temp = date_data.sort_values(by=['Date'])
+    date_data_temp = date_data_temp.reset_index(drop=True)
+    date_data_temp = date_data_temp['Date']
+    start_zoom = date_data_temp[0] - relativedelta(months=2)
+    print(start_zoom)
+    end_zoom = date_data_temp[len(date_data_temp)-1] + relativedelta(months=2)
+    print(end_zoom)
+
 
     # Get stock price data
     start = datetime.datetime.today() - relativedelta(years=5)
@@ -101,6 +110,8 @@ def update_graph(ticker):
 
         return annotation_list
 
+
+
     fig.update_layout(
         title='<b>' + ticker + ' Investment Process</b>',
         title_x=0.5,
@@ -110,6 +121,9 @@ def update_graph(ticker):
                 color="black"
             ),
         yaxis_title="<b>Stock Price</b>",
+        xaxis = dict(
+            range=[start_zoom,end_zoom],  # sets the range of xaxis
+        ),
         margin={'l': 50, 'r': 50, 't': 40, 'b': 40},
         annotations=create_annotation_list(ticker_data),
         height=775,
