@@ -26,10 +26,6 @@ colors = {
 app.layout = html.Div(children = [html.Div([html.H1('LIGHTHAVEN INVESTMENT PROCESS')],
                            style={'textAlign': 'center', 'fontSize':20}),
 
-        # ad table
-        # html.Div(children = [html.H1(children="Data Table", # html for table
-        #          style= {'textAlign': 'center', 'fontSize':20}), show_data_table('AMZN')]),
-
         dcc.Dropdown(
             id='input',
             options=[{'label':item, 'value':item} for item in get_data_table()['Ticker'].unique()],
