@@ -19,18 +19,18 @@ server = app.server
 my_css_urls = ["https://codepen.io/rmarren1/pen/mLqGRg.css"]
 
 colors = {
-    'background': '#414b4d',
+    'background': '#c7cfd4',
     'text': '#7FDBFF'
 }
 
 app.layout = html.Div(children = [html.Div([html.H1('LIGHTHAVEN INVESTMENT PROCESS')],
-                           style={'textAlign': 'center', 'fontSize':20}),
-
+                                           style={'textAlign': 'center', 'fontSize':20}),
         dcc.Dropdown(
             id='input',
             options=[{'label':item, 'value':item} for item in get_data_table()['Ticker'].unique()],
             value = get_data_table()['Ticker'].unique()[0],
-            placeholder="Select a Ticker"
+            placeholder="Select a Ticker",
+            style = {'background-color': '#03b1fc'}
         ),
 
         html.Div(id = 'main_graph'),
@@ -120,7 +120,7 @@ def update_graph(ticker):
         margin={'l': 50, 'r': 50, 't': 40, 'b': 40},
         annotations=create_annotation_list(ticker_data),
         height=775,
-        paper_bgcolor='#03b1fc'
+        paper_bgcolor='#c7cfd4'
         )
 
     stock_chart = dcc.Graph(id="Stock Graph", figure=fig)
@@ -139,11 +139,8 @@ def show_data_table(ticker):
         id='table',
         columns=[{"name": i, "id": i} for i in table.columns],
         data=table.to_dict('records'),
-        style_cell={'textAlign': 'left'},
-        style_header={
-            'backgroundColor': 'white',
-            'fontWeight': 'bold'
-        }
+        style_header={'backgroundColor': 'rgb(30, 30, 30)'},
+        style_cell={'backgroundColor': 'rgb(50, 50, 50)', 'color': 'white', 'textAlign': 'left'}
     )
     return final_table
 

@@ -130,7 +130,7 @@ def create_table(data_full, ticker):
     process_data = [['Pass Level 2/3', 0, 0], ['Pass Level 4/5', 0, 0], ['Pass Level 6/7', 0, 0]]
     process_data = pd.DataFrame(process_data, columns=['Research Phase', 'Average', ticker])
 
-    print(get_lags_average(data_full)[0])
+    print(process_data)
     process_data.loc[0, ("Average")] = get_lags_average(data_full)[0]
     process_data.loc[1, ("Average")] = get_lags_average(data_full)[1]
     process_data.loc[2, ("Average")] = get_lags_average(data_full)[2]
